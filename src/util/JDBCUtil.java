@@ -10,6 +10,10 @@ import javax.swing.*;
 import org.apache.commons.dbcp.BasicDataSourceFactory;
 import org.apache.log4j.Logger;
 
+import entity.AdminRowMapping;
+import impl.TransactionImpl;
+import transaction.Transaction;
+
 public class JDBCUtil {
 	static Logger log = Logger.getLogger(JDBCUtil.class);
 	static Properties properties = new Properties();
@@ -135,4 +139,17 @@ public class JDBCUtil {
 		}
 		return (List<T>) arrayList;
 	}
+
+//	public static void main(String[] args) {
+//		JDBCUtil jdbcUtil = new JDBCUtil();
+//		Transaction transaction = new TransactionImpl();
+//		try {
+//			transaction.startTransaction();
+//			jdbcUtil.executeQuery("select * from admin", new AdminRowMapping());
+//			transaction.commit();
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 }
