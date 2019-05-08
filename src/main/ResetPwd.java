@@ -1,16 +1,15 @@
 package main;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-public class AdminMenu extends JFrame {
+public class ResetPwd extends JFrame {
 	private JButton resetPassword = new JButton("重设密码");
+	private JButton addBrother = new JButton("添加小弟");
 
-	public AdminMenu(String title) {
+	public ResetPwd(String title) {
 		super(title);
 		init();
 		addComponent();
@@ -20,7 +19,7 @@ public class AdminMenu extends JFrame {
 
 	public void init() {
 		this.getContentPane().setBackground(Color.PINK);
-		setSize(300, 200);
+		setSize(500, 400);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setLayout(null);
@@ -28,20 +27,14 @@ public class AdminMenu extends JFrame {
 	}
 
 	public void addComponent() {
-		resetPassword.setBounds(100, 50, 100, 50);
+		resetPassword.setBounds(200, 100, 100, 50);
 		add(resetPassword);
+		addBrother.setBounds(200, 200, 100, 50);
+		add(addBrother);
 	}
 
 	public void addListen() {
-		resetPassword.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				dispose();
-				ResetPwd resetPwd=new ResetPwd("重设密码");
-				resetPwd.setVisible(true);
-			}
-		});
+
 	}
+
 }
