@@ -87,7 +87,9 @@ public class AdminLogin extends JFrame {
 				String username = usernameText.getText();
 				String password = passwordText.getText();
 				if (adminService.queryByUserName(username, password)) {
-					JOptionPane.showMessageDialog(null, "登录成功", "成功", JOptionPane.OK_OPTION);
+					dispose();
+					AdminMenu adminMenu=new AdminMenu("管理员界面");
+					adminMenu.setVisible(true);
 				}
 			}
 		});
