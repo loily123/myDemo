@@ -44,4 +44,23 @@ public class AdminDaoImpl implements AdminDao {
 		JOptionPane.showMessageDialog(null, "该用户不存在", "错误提示", JOptionPane.ERROR_MESSAGE);
 		return false;
 	}
+
+	@Override
+	public boolean updateAdmin(String username, String password) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		sql = "update admin set password=? where username=?";
+		try {
+			transaction.startTransaction();
+			result = jdbc.executeUpdate(sql, password, username);
+			transaction.commit();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (result == 1) {
+			return true;
+		}
+		return false;
+	}
 }

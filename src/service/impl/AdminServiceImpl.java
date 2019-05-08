@@ -13,4 +13,10 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.queryByName(userName, password);
 	}
 
+	@Override
+	public boolean updateAdmin(String username, String password) {
+		// TODO Auto-generated method stub
+		return adminDao.updateAdmin(username, password);
+	}
+
 }

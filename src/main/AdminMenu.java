@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 
 public class AdminMenu extends JFrame {
 	private JButton resetPassword = new JButton("重设密码");
+	public static String username, password;
 
 	public AdminMenu(String title) {
 		super(title);
@@ -34,12 +35,14 @@ public class AdminMenu extends JFrame {
 
 	public void addListen() {
 		resetPassword.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				dispose();
-				ResetPwd resetPwd=new ResetPwd("重设密码");
+				ResetPwd resetPwd = new ResetPwd("重设密码");
+				resetPwd.username = username;
+				resetPwd.password = password;
 				resetPwd.setVisible(true);
 			}
 		});

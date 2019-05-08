@@ -88,7 +88,9 @@ public class AdminLogin extends JFrame {
 				String password = passwordText.getText();
 				if (adminService.queryByUserName(username, password)) {
 					dispose();
-					AdminMenu adminMenu=new AdminMenu("管理员界面");
+					AdminMenu adminMenu = new AdminMenu("管理员界面");
+					adminMenu.username = username;
+					adminMenu.password = password;
 					adminMenu.setVisible(true);
 				}
 			}
