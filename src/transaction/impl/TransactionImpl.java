@@ -6,18 +6,18 @@ import transaction.Transaction;
 import util.JDBCUtil;
 
 public class TransactionImpl implements Transaction {
-	JDBCUtil jdbcUtil = new JDBCUtil();
-	Connection connection = jdbcUtil.getConnection();
 
 	@Override
 	public void startTransaction() throws SQLException {
 		// TODO Auto-generated method stub
+		Connection connection = JDBCUtil.getConnection();
 		connection.setAutoCommit(false);
 	}
 
 	@Override
 	public void commit() throws SQLException {
 		// TODO Auto-generated method stub
+		Connection connection = JDBCUtil.getConnection();
 		connection.commit();
 		JDBCUtil.close(null, null, connection);
 	}
@@ -25,6 +25,7 @@ public class TransactionImpl implements Transaction {
 	@Override
 	public void rollback() throws SQLException {
 		// TODO Auto-generated method stub
+		Connection connection = JDBCUtil.getConnection();
 		connection.rollback();
 		JDBCUtil.close(null, null, connection);
 	}
