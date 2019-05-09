@@ -1,6 +1,5 @@
 package dao.impl;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -8,14 +7,12 @@ import javax.swing.JOptionPane;
 import dao.AdminDao;
 import entity.Admin;
 import entity.AdminRowMapping;
-import impl.TransactionImpl;
-import transaction.Transaction;
+import objectFactory.ObjectFactory;
 import util.JDBCUtil;
 
 public class AdminDaoImpl implements AdminDao {
 	private String sql = "";
-	private JDBCUtil jdbc = new JDBCUtil();
-	private Transaction transaction = new TransactionImpl();
+	private JDBCUtil jdbc = (JDBCUtil) ObjectFactory.getoObject("JDBCUtil");
 
 	@Override
 	public boolean queryByName(String userName, String password) {
@@ -26,14 +23,7 @@ public class AdminDaoImpl implements AdminDao {
 		}
 		List<Admin> admins = null;
 		sql = "select id,username,password from admin where username=?";
-		try {
-			transaction.startTransaction();
-			admins = jdbc.executeQuery(sql, new AdminRowMapping(), userName);
-			transaction.commit();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		admins = jdbc.executeQuery(sql, new AdminRowMapping(), userName);
 		if (admins.size() > 0) {
 			if (admins.get(0).getPassword().equals(password)) {
 				return true;
@@ -50,14 +40,7 @@ public class AdminDaoImpl implements AdminDao {
 		// TODO Auto-generated method stub
 		int result = 0;
 		sql = "update admin set password=? where username=?";
-		try {
-			transaction.startTransaction();
-			result = jdbc.executeUpdate(sql, password, username);
-			transaction.commit();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		result = jdbc.executeUpdate(sql, password, username);
 		if (result == 1) {
 			return true;
 		}

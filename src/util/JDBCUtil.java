@@ -19,6 +19,7 @@ public class JDBCUtil {
 	static Properties properties = new Properties();
 	static DataSource dataSource;
 	static int num = 1, end = 1;
+	static Connection connection = null;
 	static ThreadLocal<Connection> local = new ThreadLocal<Connection>();
 	static {
 		try {
@@ -37,7 +38,7 @@ public class JDBCUtil {
 	}
 
 	public static Connection getConnection() {
-		Connection connection = local.get();
+		connection = local.get();
 		try {
 			if (connection == null) {
 				connection = dataSource.getConnection();
@@ -96,7 +97,7 @@ public class JDBCUtil {
 	}
 
 	public static int executeUpdate(String sql, Object... objects) {
-		Connection connection = null;
+		connection = null;
 		PreparedStatement preparedStatement = null;
 		int result = 0;
 		connection = getConnection();
@@ -117,7 +118,7 @@ public class JDBCUtil {
 	}
 
 	public static <T> List<T> executeQuery(String sql, RowMapper rowMapper, Object... objects) {
-		Connection connection = null;
+		connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		ArrayList<Object> arrayList = new ArrayList<Object>();
@@ -139,17 +140,4 @@ public class JDBCUtil {
 		}
 		return (List<T>) arrayList;
 	}
-
-//	public static void main(String[] args) {
-//		JDBCUtil jdbcUtil = new JDBCUtil();
-//		Transaction transaction = new TransactionImpl();
-//		try {
-//			transaction.startTransaction();
-//			jdbcUtil.executeQuery("select * from admin", new AdminRowMapping());
-//			transaction.commit();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
 }

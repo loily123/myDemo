@@ -8,15 +8,15 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import objectFactory.ObjectFactory;
 import service.AdminService;
 import service.impl.AdminServiceImpl;
 
 public class AdminLogin extends JFrame {
-	private AdminService adminService = new AdminServiceImpl();
+	AdminService adminService = (AdminServiceImpl) ObjectFactory.getoObject("AdminService");
 	private JPanel topPanel = new JPanel();
 	private JPanel mainPanel = new JPanel();
 	private JLabel title = new JLabel("欢迎进入我的Demo系统");
