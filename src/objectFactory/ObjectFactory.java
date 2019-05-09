@@ -7,10 +7,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
-
 public class ObjectFactory {
-	static Logger logger = Logger.getLogger(ObjectFactory.class);
 	static Map<String, Object> map = new HashMap<String, Object>();
 	static {
 		BufferedReader bufferedReader = null;
@@ -19,9 +16,6 @@ public class ObjectFactory {
 			String str = bufferedReader.readLine();
 			while (str != null) {
 				String[] arr = str.split("=");
-				for (int i = 0; i < arr.length; i++) {
-					logger.debug(arr[i]);
-				}
 				Object object = Class.forName(arr[1]).newInstance();
 				map.put(arr[0], object);
 				str = bufferedReader.readLine();

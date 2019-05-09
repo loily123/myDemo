@@ -10,11 +10,11 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import objectFactory.ObjectFactory;
 import service.AdminService;
-import service.impl.AdminServiceImpl;
 
 public class ResetPwd extends JFrame {
-	private AdminService adminService = new AdminServiceImpl();
+	private AdminService adminService = (AdminService) ObjectFactory.getoObject("AdminService");
 	public static String username, password;
 	private JLabel oldpwdLable = new JLabel("Ô­ ÃÜ Âë");
 	private JLabel newpwdLable = new JLabel("ÐÂ ÃÜ Âë");

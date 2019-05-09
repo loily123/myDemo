@@ -10,16 +10,12 @@ import javax.swing.*;
 import org.apache.commons.dbcp.BasicDataSourceFactory;
 import org.apache.log4j.Logger;
 
-import entity.AdminRowMapping;
-import impl.TransactionImpl;
-import transaction.Transaction;
-
 public class JDBCUtil {
 	static Logger log = Logger.getLogger(JDBCUtil.class);
 	static Properties properties = new Properties();
 	static DataSource dataSource;
-	static int num = 1, end = 1;
 	static Connection connection = null;
+	public static int num = 1, end = 1;
 	static ThreadLocal<Connection> local = new ThreadLocal<Connection>();
 	static {
 		try {
@@ -42,10 +38,10 @@ public class JDBCUtil {
 		try {
 			if (connection == null) {
 				connection = dataSource.getConnection();
+				log.debug("获得连接" + num);
 				local.set(connection);
-				log.debug("获得连接对象" + num);
+				num++;
 			}
-			num++;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			JOptionPane.showMessageDialog(null, "配置url或用户名密码信息错误", "错误提示", JOptionPane.ERROR_MESSAGE);
@@ -77,11 +73,11 @@ public class JDBCUtil {
 				local.get().close();
 				local.remove();
 				log.debug("关闭连接" + end);
+				end++;
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			end++;
 		}
 	}
 
