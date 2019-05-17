@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import objectFactory.ObjectFactory;
@@ -23,7 +24,7 @@ public class AdminLogin extends JFrame {
 	private JLabel usernameLable = new JLabel("用户名");
 	private JLabel passwordLable = new JLabel("密  码");
 	private JTextField usernameText = new JTextField();
-	private JTextField passwordText = new JTextField();
+	private JPasswordField passwordText = new JPasswordField();
 	private JButton adminButton = new JButton("登录");
 	private JLabel bottomText = new JLabel("Demo系统为您服务  2810637851@qq.com");
 
