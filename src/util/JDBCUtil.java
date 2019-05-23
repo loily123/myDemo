@@ -113,7 +113,8 @@ public class JDBCUtil {
 		return result;
 	}
 
-	public static <T> List<T> executeQuery(String sql, RowMapper rowMapper, Object... objects) {
+	@SuppressWarnings("unchecked")
+	public <T> List<T> executeQuery(String sql, RowMapper rowMapper, Object... objects) {
 		connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;

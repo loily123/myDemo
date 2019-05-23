@@ -35,6 +35,7 @@ public class AdminDaoImpl implements AdminDao {
 		return false;
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
 	public boolean updateAdmin(String username, String password) {
 		// TODO Auto-generated method stub

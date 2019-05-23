@@ -14,6 +14,10 @@ import objectFactory.ObjectFactory;
 import service.AdminService;
 
 public class ResetPwd extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private AdminService adminService = (AdminService) ObjectFactory.getoObject("AdminService");
 	public static String username, password;
 	private JLabel oldpwdLable = new JLabel("Ô­ ÃÜ Âë");
@@ -62,6 +66,7 @@ public class ResetPwd extends JFrame {
 		confirm.addActionListener(new ActionListener() {
 
 			@Override
+			@SuppressWarnings("unused")
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				String oldPwd = oldpwdText.getText();

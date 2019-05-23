@@ -17,6 +17,10 @@ import service.AdminService;
 import service.impl.AdminServiceImpl;
 
 public class AdminLogin extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	AdminService adminService = (AdminServiceImpl) ObjectFactory.getoObject("AdminService");
 	private JPanel topPanel = new JPanel();
 	private JPanel mainPanel = new JPanel();
@@ -82,11 +86,12 @@ public class AdminLogin extends JFrame {
 
 	public void addListen() {
 		adminButton.addActionListener(new ActionListener() {
+			@SuppressWarnings("static-access")
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				String username = usernameText.getText();
-				String password = passwordText.getText();
+				String password = String.valueOf(passwordText.getPassword());
 				if (adminService.queryByUserName(username, password)) {
 					dispose();
 					AdminMenu adminMenu = new AdminMenu("管理员界面");
@@ -96,9 +101,5 @@ public class AdminLogin extends JFrame {
 				}
 			}
 		});
-	}
-
-	public static void main(String[] args) {
-		AdminLogin adminLogin = new AdminLogin("管理员登陆");
 	}
 }

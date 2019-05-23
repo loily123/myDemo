@@ -8,6 +8,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class AdminMenu extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JButton resetPassword = new JButton("÷ÿ…Ë√‹¬Î");
 	public static String username, password;
 
@@ -36,6 +40,7 @@ public class AdminMenu extends JFrame {
 	public void addListen() {
 		resetPassword.addActionListener(new ActionListener() {
 
+			@SuppressWarnings("static-access")
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
